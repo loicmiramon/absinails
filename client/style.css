@@ -1,0 +1,1312 @@
+@media screen and (min-width: 1024px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+  }
+  
+  /**
+  FONTS
+  **/
+  
+  @font-face {
+    font-family: "beautyboutique";
+    src: url('./assets/fonts/beauty_boutique/Beauty\ Boutique\ DEMO.otf');
+    src: url('./assets/fonts/beauty_boutique/Beauty\ Boutique\ DEMO.ttf');
+  }
+  
+  
+  @font-face {
+    font-family: 'licenz plates';
+    src: url('./assets/fonts/licenz/LicensePlate.ttf');
+  }
+  
+  
+  
+  
+  /**
+  VARIABLE COLOR
+  **/
+  :root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-mauve-light: #ddcfee;
+    --color-pink-light: #eca3bd
+  }
+  
+  /**
+  CONFIG TEMPLATE
+  **/
+  
+  #body,
+  .navigation-container,
+  .main-container {
+    display: grid;
+  }
+  
+  .container-infos-header,
+  .box-logo-header,
+  .list-navigation,
+  .items-list-navigation,
+  .container-logo,
+  .container-reseaux,
+  .btn-header,
+  .arrow-header,
+  .section-presentation,
+  .container-presentation-entreprise,
+  .container-presentation-propos,
+  .box-presentation-entreprise,
+  .box-presentation-propos,
+  .box-logo-presentation,
+  .section-realisation,
+  .section-avis,
+  .container-avis,
+  .box-infos-avis,
+  .card-avis,
+  .box-card-star,
+  .title-card-avis,
+  .box-text-card,
+  .text-card-avis, 
+  .section-reservation,
+  .form-reservation,
+  .container-form-reservation,
+  .container-form-select-reservation,
+  .container-form-message-reservation,
+  .box-form-reservation,
+  .footer-container {
+    display: flex;
+  }
+  
+  #body {
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 100vh 100vh;
+    grid-template-areas: 
+    "header header header header"
+    "main main main main"
+    ;
+  }
+  
+  .main-container {
+    grid-area: main;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 1fr) 10vh;
+    grid-template-areas: 
+    "pres pres pres pres"
+    "realisation realisation realisation realisation"
+    "avis avis avis avis"
+    "reservation reservation reservation reservation"
+    "footer footer footer footer"
+    ;
+  }
+  
+  /**
+    HEADER
+  **/
+  
+  .header-container {
+    grid-area: header;
+    background-image: url('./assets/images/header-one.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container-infos-header {
+    background-color: #00000050;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .box-logo-header {
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+  }
+  
+  .logo-infos-header {
+    height: 85%;
+  }
+  
+  .header-title {
+    position: relative;
+    font-size: 3.8em;
+    color: var(--color-white);
+    font-family: "beautyboutique";
+    text-decoration: underline var(--color-white);
+    font-style: italic;
+    font-weight: 300;
+  }
+  
+  .header-title > span {
+    color: var(--color-pink-light);
+  }
+  
+  .navigation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 60px;
+    grid-template-areas: 
+    "logo listnav reseaux"
+    ;
+    justify-items: center;
+    z-index: 3;
+  }
+  
+  .navigation-container-active {
+    position: fixed;
+    background-color: var(--color-white);
+    border-bottom: 2px solid var(--color-pink-light);
+    transition: .3s;
+  }
+  
+  .container-logo {
+    justify-content: center;
+    align-items: center;
+    grid-area: logo;
+  }
+  
+  .logo {
+    height: 160%;
+  }
+  
+  .list-navigation {
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    grid-area: listnav;
+  }
+  
+  .items-list-navigation {
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .item-list-navigation-active {
+    color: var(--color-black);
+  }
+  
+  .items-list-navigation:hover {
+    text-decoration: underline var(--color-pink-light);
+  }
+  
+  .container-reseaux {
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+    grid-area: reseaux;
+  }
+
+  .box-burger-nav,
+  .btn-closed-nav {
+    display: none;
+  }
+  
+  .container-reseaux a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: var(--color-black);
+  }
+  
+  .icon {
+    height: 30%;
+    cursor: pointer;
+    color: var(--color-white);
+  }
+  
+  .container-reseaux .icon:hover {
+    color: var(--color-pink-light);
+  }
+  
+  .icon-navigation-active {
+    color: var(--color-black);
+  }
+  
+  
+  .btn-header {
+    animation: btnHeaderUnhover .3s forwards;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    color: var(--color-white);
+    background-color: var(--color-pink-light);
+    border-radius: 8px;
+    border: 1.3px solid var(--color-mauve-light);
+    box-shadow: 0px 0px 3px #00000040;
+    text-transform: uppercase;
+    font-size: 0.8em;
+  }
+  
+  .btn-header:hover {
+    animation: btnHeaderHover .3s forwards;
+  }
+  
+  .arrow-header {
+    justify-content: center;
+    align-items: center;
+    background: var(--color-mauve-light);
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-pink-light);
+  }
+  
+  .arrow-header > img {
+    height: 80%;
+  }
+  
+  /**
+  PRESENTATION
+  **/
+  
+  
+  .section-presentation {
+    flex-direction: column;
+    align-items: center;
+    grid-area: pres;
+  }
+  
+  .container-presentation-entreprise,
+  .container-presentation-propos {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .box-presentation-entreprise,
+  .box-presentation-propos {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title-presentation-entreprise,
+  .title-presentation-propos {
+    text-transform: uppercase;
+    margin: 40px 0px;
+    font-size: 1.6em;
+    font-family: "licenz plates";
+    letter-spacing: 0.5em;
+    color: var(--color-mauve-light);
+  }
+  
+  .title-presentation-entreprise > span,
+  .title-presentation-propos > span {
+    color: var(--color-pink-light);
+  }
+  
+  .text-presentation-entreprise,
+  .text-presentation-propos {
+    margin-bottom: 40px;
+    width: 50%;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 0.9em;
+    font-family: "montserrat";
+  }
+  
+  .box-logo-presentation {
+    margin: 40px 0px;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--color-mauve-light);
+    box-shadow: 0px 0px 3px #00000010;
+  }
+  
+  .box-logo-presentation > img {
+    height: 80%;
+  }
+  
+  /**
+  REALISATION
+  **/
+  
+  .section-realisation {
+    grid-area: realisation;
+    background-color: var(--color-mauve-light);
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+  
+  .title-realisation {
+    text-transform: uppercase;
+    margin: 40px 0px;
+    font-size: 1.6em;
+    font-family: "licenz plates";
+    letter-spacing: 0.5em;
+    color: var(--color-white)
+  }
+  
+  .box-realisation {
+    width: 90%;
+  }
+  /*
+  .card-realisation {
+    position: relative;
+    box-shadow: 0px 0px 3px #00000040;
+    height: 300px;
+    width: 300px;
+  }
+  
+  .card-realisation img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  */
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .swiper-slide img {
+    box-shadow: 0px 0px 3px #00000040;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .swiper-wrapper {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .text-realisation {
+    color: var(--color-black);
+    font-family: "licenz plates";
+    font-size: 0.7em;
+  }
+  
+  
+  /**
+  AVIS
+  **/
+  
+  .section-avis {
+    grid-area: avis;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .container-avis {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  
+  .title-avis {
+    text-transform: uppercase;
+    margin: 40px 0px;
+    font-size: 1.6em;
+    letter-spacing: 0.5em;
+    color: var(--color-mauve-light)
+  }
+  
+  .title-avis span {
+    color: var(--color-pink-light);
+    
+  }
+  
+  .card-avis {
+    border-radius: 8px;
+    align-items: center;
+    box-shadow: 0px 0px 2px #00000040;
+    width: 30%;
+    height: 200px;
+    flex-direction: column;
+  }
+  
+  .title-card-avis {
+    background-color: #00000050;
+    text-transform: uppercase;
+    align-items: center;
+    height: 20%;
+    padding-left: 10px;
+    border-radius: 5px 5px 0px 0px;
+    color: var(--color-white);
+    width: 100%;
+  }
+  
+  .box-card-star {
+    align-items: center;
+    height: 30px;
+    width: 100%;
+  }
+  
+  .box-card-star img {
+    height: 60%;
+    padding-left: 10px;
+  }
+  
+  .box-text-card {
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-card-avis {
+    border: 1px solid var(--color-pink-light);
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 85%;
+    width: 85%;
+    background-color: var(--color-mauve-light);
+    font-size: 0.9em;
+  }
+  
+  
+  
+  
+  /**
+  RESERVATION
+  **/
+  
+  .section-reservation {
+    justify-content: center;
+    grid-area: reservation;
+    background-color: var(--color-mauve-light);
+  }
+  
+  .form-reservation {
+    margin: 30px 0px;
+    height: 600px;
+    width: 90%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .title-formulaire {
+    font-size: 1.7em;
+    margin: 20px 0px;
+    color: var(--color-white);
+    text-decoration: underline var(--color-white);
+  }
+  
+  .title-formulaire > span {
+    color: var(--color-pink-light);
+  }
+  
+  .container-form-reservation {
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .container-form-select-reservation {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container-form-message-reservation {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .box-form-reservation {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .container-form-reservation input {
+    outline: none;
+    height: 30px;
+    width: 80%;
+    border: none;
+    border-bottom: 3px solid var(--color-pink-light);
+    padding-left: 5px;
+  }
+  
+  .container-form-reservation input:focus {
+    border-bottom: 3px solid var(--color-mauve-light);
+    transition: .3s;
+  }
+  
+  .container-form-select-reservation select {
+    outline: none;
+    width: 60%;
+    height: 30px;
+    border: 1px solid var(--color-pink-light);
+    border-radius: 4px;
+  }
+  
+  .container-form-reservation label,
+  .container-form-message-reservation label,
+  .container-form-select-reservation label {
+    margin-bottom: 20px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+  
+  .container-form-message-reservation textarea {
+    padding-left: 5px;
+    padding-top: 5px;
+    border: none;
+    width: 80%;
+    height: 140px;
+    border-bottom: 3px solid var(--color-pink-light);
+    padding-left: 5px;
+    outline: none;
+  }
+  
+  .container-form-message-reservation textarea:focus {
+    border-bottom: 3px solid var(--color-mauve-light);
+    transition: .3s;
+  }
+  
+  .btn-form-reservation {
+    width: 40%;
+    height: 30px;
+    border-radius: 8px;
+    background-color: var(--color-pink-light);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px #00000040;
+    color: var(--color-white);
+  }
+  
+  /**
+  FOOTER
+  **/
+  
+  .footer-container {
+    grid-area: footer;
+    background-color: var(--color-white);
+  
+  }
+  
+  
+  /**
+  KEYFRAMES
+  **/
+  
+  @keyframes btnHeaderHover {
+    from {
+      background-color: var(--color-pink-light);
+      border: 1.3px solid var(--color-mauve-light);
+      width: 200px;
+      height: 45px;
+    } to {
+      background-color: var(--color-white);
+      color: var(--color-black);
+      border: 1.5px solid var(--color-pink-light);
+      width: 210px;
+      height: 50px;
+    }
+  }
+  
+  @keyframes btnHeaderUnhover {
+    from {
+      width: 210px;
+      height: 50px;
+      background-color: var(--color-mauve-light);    border: 1.3px solid var(--color-pink-light);
+    } to {
+      background-color: var(--color-pink-light);    border: 1.3px solid var(--color-mauve-light);
+      width: 200px;
+      height: 45px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 330px) and (max-width: 1024px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+  }
+  
+  /**
+  FONTS
+  **/
+  
+  @font-face {
+    font-family: "beautyboutique";
+    src: url('./assets/fonts/beauty_boutique/Beauty\ Boutique\ DEMO.otf');
+    src: url('./assets/fonts/beauty_boutique/Beauty\ Boutique\ DEMO.ttf');
+  }
+  
+  
+  @font-face {
+    font-family: 'licenz plates';
+    src: url('./assets/fonts/licenz/LicensePlate.ttf');
+  }
+  
+  
+  
+  
+  /**
+  VARIABLE COLOR
+  **/
+  :root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-mauve-light: #ddcfee;
+    --color-pink-light: #eca3bd
+  }
+  
+  /**
+  CONFIG TEMPLATE
+  **/
+  
+  #body,
+  .navigation-container,
+  .main-container {
+    display: grid;
+  }
+  
+  .container-infos-header,
+  .box-logo-header,
+  .list-navigation,
+  .items-list-navigation,
+  .container-logo,
+  .container-reseaux,
+  .btn-header,
+  .arrow-header,
+  .box-burger-nav,
+  .section-presentation,
+  .container-presentation-entreprise,
+  .container-presentation-propos,
+  .box-presentation-entreprise,
+  .box-presentation-propos,
+  .box-logo-presentation,
+  .section-realisation,
+  .section-avis,
+  .container-avis,
+  .box-infos-avis,
+  .card-avis,
+  .box-card-star,
+  .title-card-avis,
+  .box-text-card,
+  .text-card-avis, 
+  .section-reservation,
+  .form-reservation,
+  .container-form-reservation,
+  .container-form-select-reservation,
+  .container-form-message-reservation,
+  .box-form-reservation,
+  .footer-container {
+    display: flex;
+  }
+  
+  #body {
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: 100vh 100vh;
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+  }
+  
+  .main-container {
+    grid-area: main;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(4, 1fr) 10vh;
+    grid-template-areas: 
+    "pres "
+    "realisation"
+    "avis"
+    "reservation"
+    "footer"
+    ;
+  }
+  
+  /**
+    HEADER
+  **/
+  
+  .header-container {
+    grid-area: header;
+    background-image: url('./assets/images/backgroundMobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container-infos-header {
+    background-color: #00000050;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .box-logo-header {
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+  }
+  
+  .logo-infos-header {
+    height: 85%;
+  }
+  
+  .header-title {
+    position: relative;
+    font-size: 1.7em;
+    color: var(--color-white);
+    font-family: "beautyboutique";
+    text-decoration: underline var(--color-white);
+    font-style: italic;
+    font-weight: 300;
+  }
+  
+  .header-title > span {
+    color: var(--color-pink-light);
+  }
+  
+  .navigation-container {
+    display: flex;
+    z-index: 1010;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    justify-content: space-between;
+    padding: 0px 10px;
+  }
+  
+  .navigation-container-active {
+    position: fixed;
+    background-color: var(--color-white);
+    border-bottom: 2px solid var(--color-pink-light);
+    transition: .3s;
+  }
+  
+  .container-logo {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 160%;
+  }
+  
+  .list-navigation {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-mauve-light);
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .list-navigation-active {
+    display: flex;
+  }
+
+  .btn-closed-nav {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    height: 30px;
+    width: 30px;
+  }
+
+  .btn-closed-nav > img {
+    height: 80%;
+  }
+  
+  .items-list-navigation {
+    justify-content: center;
+    align-items: center;
+    color: var(--color-black);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    height: 100%;
+    width: 100%;
+  }
+
+  
+  .items-list-navigation:hover {
+    text-decoration: underline var(--color-pink-light);
+  }
+
+  .box-burger-nav {
+    width: 15%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .barre-burger-nav {
+    width: 50%;
+    height: 3px;
+    background-color: var(--color-mauve-light);
+  }
+  
+  .container-reseaux {
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+  }
+  
+  .container-reseaux a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: var(--color-black);
+  }
+  
+  .icon {
+    height: 30%;
+    cursor: pointer;
+    color: var(--color-white);
+  }
+  
+  .container-reseaux .icon:hover {
+    color: var(--color-pink-light);
+  }
+  
+  .icon-navigation-active {
+    color: var(--color-black);
+  }
+  
+  
+  .btn-header {
+    animation: btnHeaderUnhover .3s forwards;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    right: 50%;
+    height: 30px;
+    width: 160px;
+    transform: translateX(-50%);
+    color: var(--color-white);
+    background-color: var(--color-pink-light);
+    border-radius: 8px;
+    border: 1.3px solid var(--color-mauve-light);
+    box-shadow: 0px 0px 3px #00000040;
+    text-transform: uppercase;
+    font-size: 0.8em;
+  }
+  
+  .btn-header:hover {
+    animation: btnHeaderHover .3s forwards;
+  }
+  
+  .arrow-header {
+    justify-content: center;
+    align-items: center;
+    background: var(--color-mauve-light);
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-pink-light);
+  }
+  
+  .arrow-header > img {
+    height: 60%;
+  }
+  
+  /**
+  PRESENTATION
+  **/
+  
+  
+  .section-presentation {
+    flex-direction: column;
+    align-items: center;
+    grid-area: pres;
+  }
+  
+  .container-presentation-entreprise,
+  .container-presentation-propos {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .box-presentation-entreprise,
+  .box-presentation-propos {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title-presentation-entreprise,
+  .title-presentation-propos {
+    text-transform: uppercase;
+    margin: 40px 0px;
+    font-size: 1.2em;
+    letter-spacing: 0.2em;
+    color: var(--color-mauve-light);
+  }
+  
+  .title-presentation-entreprise > span,
+  .title-presentation-propos > span {
+    color: var(--color-pink-light);
+  }
+  
+  .text-presentation-entreprise,
+  .text-presentation-propos {
+    margin-bottom: 40px;
+    width: 90%;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 0.7em;
+  }
+  
+  .box-logo-presentation {
+    margin: 40px 0px;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--color-mauve-light);
+    box-shadow: 0px 0px 3px #00000010;
+  }
+  
+  .box-logo-presentation > img {
+    height: 80%;
+  }
+  
+  /**
+  REALISATION
+  **/
+  
+  .section-realisation {
+    grid-area: realisation;
+    background-color: var(--color-mauve-light);
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+  
+  .title-realisation {
+    text-transform: uppercase;
+    margin: 40px 0px;
+    font-size: 1.6em;
+    font-family: "licenz plates";
+    letter-spacing: 0.2em;
+    color: var(--color-white)
+  }
+  
+  .box-realisation {
+    width: 90%;
+  }
+  /*
+  .card-realisation {
+    position: relative;
+    box-shadow: 0px 0px 3px #00000040;
+    height: 300px;
+    width: 300px;
+  }
+  
+  .card-realisation img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  */
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .swiper-slide img {
+    box-shadow: 0px 0px 3px #00000040;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .swiper-wrapper {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .text-realisation {
+    color: var(--color-black);
+    font-family: "licenz plates";
+    font-size: 0.7em;
+  }
+  
+  
+  /**
+  AVIS
+  **/
+  
+  .section-avis {
+    grid-area: avis;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .container-avis {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+  }
+  
+  
+  .title-avis {
+    text-transform: uppercase;
+    margin: 40px 0px;
+    font-size: 0.8em;
+    letter-spacing: 0.2em;
+    color: var(--color-mauve-light)
+  }
+  
+  .title-avis span {
+    color: var(--color-pink-light);
+  }
+  
+  .card-avis {
+    border-radius: 8px;
+    align-items: center;
+    box-shadow: 0px 0px 2px #00000040;
+    width: 70%;
+    height: 210px;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .title-card-avis {
+    background-color: #00000050;
+    text-transform: uppercase;
+    align-items: center;
+    height: 20%;
+    padding-left: 10px;
+    border-radius: 5px 5px 0px 0px;
+    color: var(--color-white);
+    width: 100%;
+  }
+  
+  .box-card-star {
+    align-items: center;
+    height: 30px;
+    width: 100%;
+  }
+  
+  .box-card-star img {
+    height: 60%;
+    padding-left: 10px;
+  }
+  
+  .box-text-card {
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-card-avis {
+    border: 1px solid var(--color-pink-light);
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 85%;
+    width: 85%;
+    background-color: var(--color-mauve-light);
+    font-size: 0.9em;
+  }
+  
+  
+  
+  
+  /**
+  RESERVATION
+  **/
+  
+  .section-reservation {
+    justify-content: center;
+    grid-area: reservation;
+    background-color: var(--color-mauve-light);
+  }
+  
+  .form-reservation {
+    margin: 30px 0px;
+    height: 600px;
+    width: 90%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .title-formulaire {
+    font-size: 1.7em;
+    margin: 20px 0px;
+    color: var(--color-white);
+    text-decoration: underline var(--color-white);
+  }
+  
+  .title-formulaire > span {
+    color: var(--color-pink-light);
+  }
+  
+  .container-form-reservation {
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .container-form-select-reservation {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container-form-message-reservation {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .box-form-reservation {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .container-form-reservation input {
+    outline: none;
+    height: 30px;
+    width: 80%;
+    border: none;
+    border-bottom: 3px solid var(--color-pink-light);
+    padding-left: 5px;
+  }
+  
+  .container-form-reservation input:focus {
+    border-bottom: 3px solid var(--color-mauve-light);
+    transition: .3s;
+  }
+  
+  .container-form-select-reservation select {
+    outline: none;
+    width: 60%;
+    height: 30px;
+    border: 1px solid var(--color-pink-light);
+    border-radius: 4px;
+  }
+  
+  .container-form-reservation label,
+  .container-form-message-reservation label,
+  .container-form-select-reservation label {
+    margin-bottom: 20px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+  
+  .container-form-message-reservation textarea {
+    padding-left: 5px;
+    padding-top: 5px;
+    border: none;
+    width: 80%;
+    height: 140px;
+    border-bottom: 3px solid var(--color-pink-light);
+    padding-left: 5px;
+    outline: none;
+  }
+  
+  .container-form-message-reservation textarea:focus {
+    border-bottom: 3px solid var(--color-mauve-light);
+    transition: .3s;
+  }
+  
+  .btn-form-reservation {
+    width: 40%;
+    height: 30px;
+    border-radius: 8px;
+    background-color: var(--color-pink-light);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px #00000040;
+    color: var(--color-white);
+  }
+  
+  /**
+  FOOTER
+  **/
+  
+  .footer-container {
+    grid-area: footer;
+    background-color: var(--color-white);
+  
+  }
+  
+  
+  /**
+  KEYFRAMES
+  **/ 
+}
+
