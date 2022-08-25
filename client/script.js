@@ -14,15 +14,15 @@ const optionsNavFixed = {
 
 const navFixed = function (entries) {
   entries.forEach(entry => {
-    if(entry.intersectionRatio < ratioNavFixed) {
+    if (entry.intersectionRatio < ratioNavFixed) {
       navigation.classList.add('navigation-container-active');
-      for(let i = 0 ; i < itemNavigation.length ; i++) {
+      for (let i = 0; i < itemNavigation.length; i++) {
         itemNavigation[i].classList.add('item-list-navigation-active')
       }
       iconNavigation.classList.add('icon-navigation-active')
     } else {
       navigation.classList.remove('navigation-container-active');
-      for(let i = 0 ; i < itemNavigation.length ; i++) {
+      for (let i = 0; i < itemNavigation.length; i++) {
         itemNavigation[i].classList.remove('item-list-navigation-active')
       }
       iconNavigation.classList.remove('icon-navigation-active')
@@ -53,24 +53,60 @@ new Swiper(".mySwiperTwo", {
   },
 });
 
-// Open Menu Mobile && Tablet
+// Open / Close Menu Mobile && Tablet
 
 const listNav = document.querySelector(".list-navigation")
 const burger = document.querySelector('.box-burger-nav')
-const btnCloseNav = document.querySelector('.btn-closed-nav')
 const itemNav = document.querySelectorAll('.items-list-navigation')
 
 
 burger.addEventListener('click', () => {
-  listNav.classList.add('list-navigation-active')
-})
-
-btnCloseNav.addEventListener('click', () => {
-  listNav.classList.remove('list-navigation-active')
-})
-
-itemNav.forEach(elem => {
-  elem.addEventListener('click', () => {
-    listNav.classList.remove('list-navigation-active')
+  listNav.classList.toggle('list-navigation-active')
+  itemNav.forEach(item => {
+    item.style.opacity = 0
+    setTimeout(() => {
+      item.style.opacity = 1
+    }, 200)
   })
+})
+
+
+
+
+// Traitement Formulaire
+
+const inputLastname = document.querySelector('.lastname')
+const inputFirstname = document.querySelector('.firstname')
+const inputEmail = document.querySelector('.email')
+const inputPhone = document.querySelector('.phone')
+const inputService = document.querySelector('.service')
+const inputMessage = document.querySelector('.message')
+const btnSubmitForm = document.querySelector('.btn-form-reservation')
+
+
+
+// Config EmailJS
+
+
+// EmailJS SEND
+
+
+btnSubmitForm.addEventListener('click', (event) => {
+  event.preventDefault()
+  let dataForm = {
+    lastname: inputLastname.value,
+    firstname: inputFirstname.value,
+    email: inputEmail.value,
+    phone: inputPhone.value,
+    service: inputService.value,
+    message: inputMessage.value
+  }
+  emailjs.send('service_coc24lh', 'template_xhs04fa', dataForm)
+  .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text)
+  },
+  function(err) {
+    console.log(err)
+  }
+  )
 })
