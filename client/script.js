@@ -1,5 +1,17 @@
-// Menu becomes fixed on scroll
+// Loader Website
 
+const loader = document.querySelector('.loader')
+window.addEventListener('load', () => {
+  loader.classList.add('loaderOn')
+  if(loader.className === 'loader loaderOn') {
+    loader.style.display = "none"
+  }
+})
+
+// Animation Text Loader
+
+
+// Menu becomes fixed on scroll
 const header = document.querySelector('.header-container')
 const navigation = document.querySelector('.navigation-container');
 const itemNavigation = document.querySelectorAll('.items-list-navigation')
@@ -42,8 +54,6 @@ let swiper = new Swiper(".mySwiper", {
   spaceBetween: 10
 });
 
-
-
 // Diaporama Avis
 
 new Swiper(".mySwiperTwo", {
@@ -68,45 +78,4 @@ burger.addEventListener('click', () => {
       item.style.opacity = 1
     }, 200)
   })
-})
-
-
-
-
-// Traitement Formulaire
-
-const inputLastname = document.querySelector('.lastname')
-const inputFirstname = document.querySelector('.firstname')
-const inputEmail = document.querySelector('.email')
-const inputPhone = document.querySelector('.phone')
-const inputService = document.querySelector('.service')
-const inputMessage = document.querySelector('.message')
-const btnSubmitForm = document.querySelector('.btn-form-reservation')
-
-
-
-// Config EmailJS
-
-
-// EmailJS SEND
-
-
-btnSubmitForm.addEventListener('click', (event) => {
-  event.preventDefault()
-  let dataForm = {
-    lastname: inputLastname.value,
-    firstname: inputFirstname.value,
-    email: inputEmail.value,
-    phone: inputPhone.value,
-    service: inputService.value,
-    message: inputMessage.value
-  }
-  emailjs.send('service_coc24lh', 'template_xhs04fa', dataForm)
-  .then(function(response) {
-      console.log('SUCCESS!', response.status, response.text)
-  },
-  function(err) {
-    console.log(err)
-  }
-  )
 })

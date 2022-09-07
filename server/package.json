@@ -1,0 +1,27 @@
+{
+  "name": "absinails",
+  "version": "1.0.0",
+  "description": "Back du site absi nails",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loicmiramon/absinails.git"
+  },
+  "author": "loic miramon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loicmiramon/absinails/issues"
+  },
+  "homepage": "https://github.com/loicmiramon/absinails#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.4",
+    "nodemon": "^2.0.19"
+  }
+}
