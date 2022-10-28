@@ -3,7 +3,7 @@
 const loader = document.querySelector('.loader')
 window.addEventListener('load', () => {
   loader.classList.add('loaderOn')
-  if(loader.className === 'loader loaderOn') {
+  if (loader.className === 'loader loaderOn') {
     loader.style.display = "none"
   }
 })
@@ -54,14 +54,6 @@ let swiper = new Swiper(".mySwiper", {
   spaceBetween: 10
 });
 
-// Diaporama Avis
-
-new Swiper(".mySwiperTwo", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
 
 // Open / Close Menu Mobile && Tablet
 
@@ -71,11 +63,33 @@ const itemNav = document.querySelectorAll('.items-list-navigation')
 
 
 burger.addEventListener('click', () => {
-  listNav.classList.toggle('list-navigation-active')
+  navigation.classList.toggle('nav-active')
+  if(navigation.className === "navigation-container nav-active") {
+    navigation.classList.add("navigation-active")
+  } else {
+    navigation.classList.remove('navigation-active')
+  }
   itemNav.forEach(item => {
+    item.addEventListener('click', () => {
+      listNav.classList.remove('nav-active')
+    })
     item.style.opacity = 0
     setTimeout(() => {
       item.style.opacity = 1
     }, 200)
   })
+})
+
+// Open / Closed Pop-up Avis
+
+const openBTN = document.querySelector('.btn-popup-open')
+openBTN.addEventListener('click', (e) => {
+  e.preventDefault()
+  document.querySelector('.form-avis').style.display = "flex"
+})
+
+const closedBTN = document.querySelector('.btn-popup-closed')
+closedBTN.addEventListener('click', (e) => {
+  e.preventDefault()
+  document.querySelector('.form-avis').style.display = "none"
 })

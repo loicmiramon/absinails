@@ -40,9 +40,7 @@
         <li class="items-list-navigation"><a href="#reservation">Réservation</a></li>
       </ul>
       <div class="box-burger-nav">
-        <span class="barre-burger-nav first-barre"></span>
-        <span class="barre-burger-nav second-barre"></span>
-        <span class="barre-burger-nav thirty-barre"></span>
+        <span class="barre-burger-nav"></span>
       </div>
       <div class="container-reseaux">
         <a href="https://www.instagram.com/absinails" target="_blank">
@@ -165,11 +163,36 @@
       </form>
     </section>
     <section id="avis" class="section-avis">
+      <div class="btn-popup-open">
+        <a href="#">+</a>
+      </div>
       <h2 class="title-avis">Parce que vos <span>avis</span> comptent <span>!</span></h2>
-      <p class="text-avis">Vous souhaitez donner votre avis, envoyer le <a href="https://www.instagram.com/absinails"
-          target="_blank">Ici</a> par message privé</p>
-      <article class="container-avis">
-        <div class="card-avis">
+      <div class="notif-avis">Avis envoyé</div>
+          <form class="form-avis" action="">
+            <div class="btn-popup-closed">
+              <a href="#">X</a>
+            </div>
+            <div class="container-field">
+              <label for="nameAvis">Votre Nom</label>
+              <input type="text" id="nameAvis" name="nameAvis" placeholder="Nom" required>
+              <p class="alert-avis"></p>
+            </div>
+            <div class="container-field">
+              <label for="note-avis">Votre Note</label>
+              <input type="number" id="note-avis" name="noteAvis" placeholder="Entrez un nombre" required>
+              <p class="alert-avis"></p>
+            </div>
+            <div class="container-field">
+              <label for="messageAvis">Votre Message</label>
+              <textarea name="messageAvis" id="messageAvis" cols="30" rows="10" placeholder="Message" required></textarea>
+              <p class="alert-avis"></p>
+            </div>
+            <div class="container-button-avis">
+              <button class="avis-btn">Envoyer</button>
+            </div>
+          </form>
+      <div class="container-avis">
+        <!--<div class="card-avis">
           <div class="head-card-avis">
             <h3 class="title-card-avis">Sabrina</h3>
             <div class="box-card-star">
@@ -258,8 +281,8 @@
           <div class="box-text-card">
             <p class="text-card-avis">"Super accueil, avec une pose professionnelle"</p>
           </div>
-        </div>
-      </article>
+        </div>-->
+      </div>
     </section>
     <footer class="footer-container">
       <!--<a href="./mention.html">Mentions Légales</a>-->
@@ -275,24 +298,19 @@
     })();
 
     // Traitement Formulaire NodeJS (requête)
-    const inputLastname = document.querySelector('.lastname')
-    const inputFirstname = document.querySelector('.firstname')
-    const inputEmail = document.querySelector('.email')
-    const inputPhone = document.querySelector('.phone')
-    const inputService = document.querySelector('.service')
-    const inputMessage = document.querySelector('.message')
+    const formContact = document.querySelector('.form-reservation')
     const btnSubmitForm = document.querySelector('.btn-form-reservation')
     const notifContact = document.querySelector('.notif-contact')
 
     btnSubmitForm.addEventListener('click', (event) => {
       event.preventDefault()
       let dataForm = {
-        lastname: inputLastname.value,
-        firstname: inputFirstname.value,
-        email: inputEmail.value,
-        phone: inputPhone.value,
-        service: inputService.value,
-        message: inputMessage.value
+        lastname: formContact.lastname.value,
+        firstname: formContact.firstname.value,
+        email: formContact.email.value,
+        phone: formContact.phone.value,
+        service: formContact.service.value,
+        message: formContact.message.value
       }
 
       axios.post(`/contact`, {
@@ -317,6 +335,98 @@
         console.log("Failed", err)
       })
     })
+
+    const createCard = (data) => {
+
+      const containerAvis = document.querySelector('.container-avis')
+
+      const article = document.createElement('article')
+      const headArticle = document.createElement('div')
+      const titleArticle = document.createElement('h2')
+      const boxStarArticle = document.createElement('div')
+      const boxInfosArticle = document.createElement('div')
+      const textArticle = document.createElement('p')
+      
+      article.className = "card-avis"
+      headArticle.className = "head-card-avis"
+      titleArticle.className = "title-card-avis"
+      boxStarArticle.className = "box-card-star"
+      boxInfosArticle.className = "box-text-card"
+      textArticle.className = "text-card-avis"
+      
+      
+      titleArticle.innerHTML = data.name
+      textArticle.innerHTML = `"${data.message}"`
+      let countStar = 0
+      do {
+        const starArticle = document.createElement('img')
+        starArticle.setAttribute('src', "./assets/icones/star-icon.webp")
+        boxStarArticle.appendChild(starArticle)
+        countStar++
+      } while (countStar < data.note);
+      
+      
+
+      article.appendChild(headArticle)
+      article.appendChild(boxInfosArticle)
+      headArticle.appendChild(titleArticle)
+      headArticle.appendChild(boxStarArticle)
+      boxInfosArticle.appendChild(textArticle)
+      containerAvis.appendChild(article)
+    }
+
+    const formButtonAvis = document.querySelector('.container-button-avis button')
+    const formAvis = document.querySelector('.form-avis')
+    const notifAvis = document.querySelector('.notif-avis')
+
+
+    formButtonAvis.addEventListener('click', (e) => {
+      e.preventDefault()
+      axios.post('/avis/newavis', {
+        name : formAvis.nameAvis.value,
+        note : formAvis.noteAvis.value,
+        message : formAvis.messageAvis.value
+      }).then(() => {
+        notifAvis.classList.add('notif-avis-active')
+        console.log("Success")
+        setTimeout(() => {
+          notifAvis.classList.remove('notif-avis-active')
+          notifAvis.classList.add('notif-avis-inactive')
+        }, 5000)
+        formAvis.nameAvis.value = ""
+        formAvis.noteAvis.value = ""
+        formAvis.messageAvis.value = ""
+        console.log('Post Client Avis Success');
+      }).catch((err) => {
+        console.log('Post Client Avis :', err);
+      })
+      document.querySelector('.form-avis').style.display = "none"
+    })
+
+
+    axios.get(`/avis`).then((res) => {
+      console.log(res);
+      res.data.avis.map(data => createCard(data))
+    })
+
+      /**EN TEST**/
+
+    const verif = (input) => {
+      const regex = new RegExp('[a-zA-Z0-9]', 'g')
+      const inputTest = regex.test(input.value)
+      if(inputTest === true) {
+        input.nextSibling.innerHTML = 'Valide'
+      } else {
+        input.nextSibling.innerHTML = 'Non Valide'
+      }
+    }
+
+    formAvis.nameAvis.addEventListener('keydown', () => {
+      verif(formAvis.nameAvis)
+    })
+
+    /**********/
+
   </script>
   <script src="script.js"></script>
 </body>
